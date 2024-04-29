@@ -14,7 +14,7 @@ def show_messages(sent_messages):
 
 
 
-send_messages(new_messages, sent_messages)
+send_messages(new_messages[:], sent_messages)
 show_messages(sent_messages)
 print(new_messages)
 print(sent_messages)
