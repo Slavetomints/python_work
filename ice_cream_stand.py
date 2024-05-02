@@ -43,4 +43,4 @@ class IceCreamShop(Restaurant):
             print(f'\n-{flavor.title()}')
 
 dairy_haus = IceCreamShop('Dairy Haus', 'Desert')
-print(dairy_haus.display_flavors())
+dairy_haus.display_flavors()

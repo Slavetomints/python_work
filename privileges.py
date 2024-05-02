@@ -33,6 +33,27 @@ class Users:
         print(f'\nThe current user is {self.username}')
         print(f'{self.username} has logged in {self.login_attempts} time(s)')
 
+class Privileges(Users):
+    """Privileges of users"""
+
+    def __init__(self, first_name, last_name, username, password, gender):
+        """
+        Initializes info from parents class
+        Initializes user info
+        """
+        super().__init__(first_name, last_name, username, password, gender)
+        self.privileges = [
+            'can make posts', 
+            'can see other users data', 
+            'can add/remove users'
+            ]
+
+    def show_privileges(self):
+        """Display the admins privileges"""
+        print(f'{self.username} has the following privileges')
+        for privilege in self.privileges:
+            print(f'\n-{privilege}')
+
 class Admin(Users):
     """Info specifically on admins"""
 
@@ -42,17 +63,8 @@ class Admin(Users):
         Initializes admin info
         """
         super().__init__ (first_name, last_name, username, password, gender)
-        self.privileges = [
-            'can make posts', 
-            'can see other users data', 
-            'can add/remove users'
-            ]
+        self.privileges = Privileges(first_name, last_name, username, password, gender)
     
-    def show_privileges(self):
-        """Display the admins privileges"""
-        print(f'{self.username} has the following privileges')
-        for privilege in self.privileges:
-            print(f'\n-{privilege}')
 
 daisy = Admin('daisy', 'hardwick', 'slavetomints', '12345678910', 'female')
-daisy.show_privileges()
+daisy.privileges.show_privileges()
