@@ -2,7 +2,7 @@ class Car:
     """A simple attempt to represent a car"""
 
     def __init__(self, make, model, year):
-        """Initialikze attributes to describe a car"""
+        """Initialize attributes to describe a car"""
         self.make = make
         self.model = model
         self.year = year 
@@ -17,5 +17,60 @@ class Car:
         """Print a statement showing the car's milage"""
         print(f"This car has {self.odometer_reading} miles on it")
 
-    def update_odometer(self):
-        """"""
+    def update_odometer(self, milage):
+        """Set the odometer reading to the given value"""
+        if milage >= self.odometer_reading:
+            self.odometer_reading = milage
+        else:
+            print('You cant roll back an odometer!')
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading"""
+        self.odometer_reading += miles
+
+
+
+
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles"""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes of the parent class."""
+        super().__init__(make, model, year)
+        self.battery = Battery()
+
+
+
+class Battery:
+    """A simple attempt toi model a battery fir abn electric car."""
+
+    def __init__(self, battery_size = 40):
+         """Initialize the battery's attributes"""
+         self.battery_size = battery_size
+
+    def describe_battery(self):
+        """Print a statement describing the battery size"""
+        print(f'This car has a {self.battery_size}-kWh battery.')
+
+    def get_range(self):
+        """Print a statement about the range this batery provides."""
+        if self.battery_size == 40:
+            range = 150
+        elif self.battery_size == 65:
+            range = 225
+
+        print(f"This car can go about {range} miles on a full charge.")
+
+    def upgrade_battery(self):
+        """Upgrades the battery to 65 if it isn't already"""
+        if self.battery_size == 65:
+            print("Your battery is up to date!")
+        else:
+            self.battery_size = 65
+            print("Your battery has been updated!")
+
+my_leaf = ElectricCar('nissan', 'leaf', '2024')
+my_leaf.battery.describe_battery()
+my_leaf.battery.upgrade_battery()
+my_leaf.battery.describe_battery()
+
