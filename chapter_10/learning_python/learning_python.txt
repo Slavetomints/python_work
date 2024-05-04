@@ -1,0 +1,3 @@
+In Python you can make a dictionary
+In Python you can use inputs to create a list
+In Python you can add variables to the end of a list
